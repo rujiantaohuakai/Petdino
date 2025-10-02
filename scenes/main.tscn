@@ -1,0 +1,138 @@
+[gd_scene load_steps=18 format=3 uid="uid://b82pukuarxo4g"]
+
+[ext_resource type="Script" uid="uid://c1qr0kjd1pw0b" path="res://scripts/yellow_pet.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://ceuvjocxor1av" path="res://dinoCharactersVersion1.1/sheets/DinoSprites - mort.png" id="2_0wfyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgp6g"]
+
+[sub_resource type="Animation" id="Animation_sugp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YellowPet/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+resource_name = "fly"
+length = 0.1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YellowPet/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_0wfyh"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YellowPet/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("YellowPet/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
+_data = {
+&"RESET": SubResource("Animation_sugp2"),
+&"fly": SubResource("Animation_jyhfs"),
+&"idle": SubResource("Animation_0wfyh"),
+&"walk": SubResource("Animation_tbgi4")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0wfyh"]
+animation = &"fly"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sugp2"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jyhfs"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0wfyh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sugp2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jyhfs"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbgi4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tefeu"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_choun"]
+states/Start/position = Vector2(195, 100)
+states/fly/node = SubResource("AnimationNodeAnimation_0wfyh")
+states/fly/position = Vector2(668, 129)
+states/idle/node = SubResource("AnimationNodeAnimation_sugp2")
+states/idle/position = Vector2(408, 86)
+states/walk/node = SubResource("AnimationNodeAnimation_jyhfs")
+states/walk/position = Vector2(458, 206)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_0wfyh"), "idle", "fly", SubResource("AnimationNodeStateMachineTransition_sugp2"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_jyhfs"), "fly", "idle", SubResource("AnimationNodeStateMachineTransition_tbgi4"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_tefeu")]
+
+[node name="Main" type="Node2D"]
+
+[node name="YellowPet" type="CharacterBody2D" parent="."]
+script = ExtResource("1_0wfyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YellowPet"]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_sgp6g")
+
+[node name="Body" type="Sprite2D" parent="YellowPet"]
+position = Vector2(12, 12)
+texture = ExtResource("2_0wfyh")
+hframes = 24
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YellowPet"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_tefeu")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="YellowPet"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeStateMachine_choun")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="SelectNewDirection" type="Timer" parent="YellowPet"]
