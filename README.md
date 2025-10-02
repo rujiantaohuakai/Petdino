@@ -8,6 +8,14 @@
 可以同时运行pets文件夹中的四个.exe文件，分别显示红黄蓝绿四个小恐龙。
 也可以去pets文件夹中运行单独的.exe文件。
 
+如果运行launch_pets.vbs时报错
+这是因为Microsoft Defender SmartScreen 阻止了无法识别的应用启动。
+![](lanuch_pets.png)
+![](error.png)
+
+需要先进入pets文件夹分别运行四个.exe文件，之后就可以正常使用launch_pets.vbs了。
+![](exe.png)
+
 按住鼠标左键可以拖动小恐龙。
 鼠标左键点击选中后，按键盘上下左右可以控制小恐龙的移动。
 鼠标左键点击选中后，按esc关闭当前小恐龙。
