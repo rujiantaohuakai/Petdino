@@ -4,30 +4,29 @@
 
 ## 使用说明：
 
-下载Pet.zip，解压后双击运行launch_pets.vbs，
-可以同时运行pets文件夹中的四个.exe文件，分别显示红黄蓝绿四个小恐龙。
-也可以去pets文件夹中运行单独的.exe文件。
+下载Pet.zip，解压后双击运行launch_pets.vbs，  
+可以同时运行pets文件夹中的四个.exe文件，分别显示红黄蓝绿四个小恐龙。  
+也可以去pets文件夹中运行单独的.exe文件。  
 
-如果运行launch_pets.vbs时报错
-这是因为Microsoft Defender SmartScreen 阻止了无法识别的应用启动。
-![](lanuch_pets.png)
-![](error.png)
+如果运行launch_pets.vbs时报错  
+这是因为Microsoft Defender SmartScreen 阻止了无法识别的应用启动。  
+![](lanuch_pets.png)  
+![](error.png)  
 
-需要先进入pets文件夹分别运行四个.exe文件，之后就可以正常使用launch_pets.vbs了。
-![](exe.png)
+需要先进入pets文件夹分别运行四个.exe文件，之后就可以正常使用launch_pets.vbs了。  
+![](exe.png)  
 
-按住鼠标左键可以拖动小恐龙。
-鼠标左键点击选中后，按键盘上下左右可以控制小恐龙的移动。
-鼠标左键点击选中后，按esc关闭当前小恐龙。
+按住鼠标左键可以拖动小恐龙。  
+鼠标左键点击选中后，按键盘上下左右可以控制小恐龙的移动。  
+鼠标左键点击选中后，按esc关闭当前小恐龙。  
 
-## 使用的资源：
+## 使用的资源：  
 
-仓库内：dinoCharactersVersion1.1.zip
-原下载地址：https://arks.itch.io/dino-characters
+仓库内：dinoCharactersVersion1.1.zip  
+原下载地址：https://arks.itch.io/dino-characters  
 
-## 注意：
+## 注意：  
 
-目前使用的方法是在同一个项目文件，更换不同小恐龙的图片，然后导出.exe
-每一个exe运行后要占用100MB左右内存，多次点击launch_pets.vbs可以出来一堆小恐龙，
-但太多容易把电脑搞得很卡
-如果有人知道怎么在一个项目中运行出来多个窗口，或者其他优化的方法，求指点quq
+目前使用的方法是在同一个项目文件，更换不同小恐龙的图片，然后导出.exe  
+每一个exe运行后要占用100MB左右内存，多次点击launch_pets.vbs可以出来一堆小恐龙，但太多容易把电脑搞得很卡  
+如果有人知道怎么在一个项目中运行出来多个窗口，或者其他优化的方法，求指点quq  
